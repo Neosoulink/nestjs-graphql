@@ -1,0 +1,11 @@
+import { Query, Resolver } from '@nestjs/graphql';
+
+import { Coffee } from './entities/coffee.entity/coffee.entity';
+
+@Resolver()
+export class CoffeesResolver {
+  @Query(() => [Coffee], { name: 'coffees' })
+  findAll() {
+    return [];
+  }
+}
