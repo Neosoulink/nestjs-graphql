@@ -5,23 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_PIPE } from '@nestjs/core';
 import { join } from 'path';
 
+import { DrinksModule } from './drinks/drinks.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CoffeesModule } from './coffees/coffees.module';
 import { DateScalar } from './common/scalars/date.scalar/date.scalar';
-import { Tea } from './teas/entities/tea.entity/tea.entity';
-import { DrinksResolver } from './drinks/drinks.resolver';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      buildSchemaOptions: {
-        orphanedTypes: [Tea],
-      },
-    }),
-    CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -32,6 +22,11 @@ import { DrinksResolver } from './drinks/drinks.resolver';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
+    DrinksModule,
   ],
   controllers: [AppController],
   providers: [
@@ -48,7 +43,6 @@ import { DrinksResolver } from './drinks/drinks.resolver';
       }),
     },
     DateScalar,
-    DrinksResolver,
   ],
 })
 export class AppModule {}
