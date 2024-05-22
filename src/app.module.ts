@@ -1,13 +1,14 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { APP_PIPE } from '@nestjs/core';
 import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { APP_PIPE } from '@nestjs/core';
+import { DateScalar } from './common/scalars/date.scalar/date.scalar';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { APP_PIPE } from '@nestjs/core';
         },
       }),
     },
+    DateScalar,
   ],
 })
 export class AppModule {}
