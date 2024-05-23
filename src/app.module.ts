@@ -23,6 +23,7 @@ import { PubSubModule } from './pub-sub/pub-sub.module';
       database: 'postgres',
       autoLoadEntities: true,
       synchronize: true,
+      logging: ['query'],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
