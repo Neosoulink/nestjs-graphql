@@ -9,7 +9,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { DrinksModule } from './drinks/drinks.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DateScalar } from './common/scalars/date.scalar/date.scalar';
+import { DateScalar } from './common/scalars/date/date.scalar';
 import { PubSubModule } from './pub-sub/pub-sub.module';
 
 @Module({
