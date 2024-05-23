@@ -18,6 +18,6 @@ export class Tea implements Drink {
   @Column()
   name: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ nullable: true })
   createAt?: Date;
 }

@@ -8,8 +8,9 @@ import {
 } from 'typeorm';
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
-import { Flavor } from './flavor.entity';
 import { Drink } from '../../common/interfaces/drink.interface/drink.interface';
+import { CoffeeType } from '../../common/enums/coffee-type.enum';
+import { Flavor } from './flavor.entity';
 
 @Entity()
 @ObjectType({ description: 'Coffee model', implements: () => Drink })
@@ -28,6 +29,9 @@ export class Coffee implements Drink {
   @ManyToMany(() => Flavor, (flavor) => flavor.coffees, { cascade: true })
   flavors?: Flavor[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({ nullable: true })
   createdAt?: Date;
+
+  @Column({ nullable: true })
+  type?: CoffeeType;
 }

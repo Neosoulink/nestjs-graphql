@@ -2,18 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""Drink interface"""
-interface Drink {
-  """Drink's name"""
-  name: String!
-}
-
 type Tea implements Drink {
   name: String!
 
   """A unique identifier"""
   id: ID!
   createAt: Date
+}
+
+"""Drink interface"""
+interface Drink {
+  """Drink's name"""
+  name: String!
 }
 
 """Coffee flavors model"""
@@ -33,18 +33,27 @@ type Coffee implements Drink {
   brand: String!
   flavors: [Flavor!]!
   createdAt: Date
+  type: CoffeeType
+}
+
+"""Available coffee types"""
+enum CoffeeType {
+  ARABICA
+  ROBUSTA
 }
 
 """Date custom scalar type"""
 scalar Date
 
 type Query {
-  drinks: [Drink!]!
+  drinks: [DrinksResult!]!
   teas: [Tea!]!
   tea(id: ID!): Tea!
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
 }
+
+union DrinksResult = Coffee | Tea
 
 type Mutation {
   createTea(createTeaInput: CreateTeaInput!): Tea!
@@ -71,6 +80,7 @@ input CreateCoffeeInput {
   name: String!
   brand: String!
   flavors: [String!]!
+  type: CoffeeType!
 }
 
 input UpdateCoffeeInput {
@@ -78,4 +88,5 @@ input UpdateCoffeeInput {
   name: String
   brand: String
   flavors: [String!]
+  type: CoffeeType
 }
