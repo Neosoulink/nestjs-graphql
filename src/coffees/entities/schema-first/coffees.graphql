@@ -1,4 +1,7 @@
 type Coffee {
+  """
+  Unique identifier
+  """
   id: ID!
   name: String!
   brand: String!
@@ -7,4 +10,5 @@ type Coffee {
 
 type Query {
   coffees: [Coffee!]!
+  coffee(id: ID!): Coffee!
 }
