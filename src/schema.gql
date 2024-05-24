@@ -17,10 +17,11 @@ interface Drink {
 }
 
 """Coffee flavors model"""
-type Flavor {
+type Flavor implements Drink {
+  name: String!
+
   """Unique identifier"""
   id: ID!
-  name: String!
   coffees: [Coffee!]!
 }
 

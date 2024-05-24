@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { UserInputError } from '@nestjs/apollo';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PubSub } from 'graphql-subscriptions';
+import { Repository } from 'typeorm';
 
 import { CreateCoffeeInput } from './dto/create-coffee.input';
 import { UpdateCoffeeInput } from './dto/update-coffee.input';
 import { Coffee } from './entities/coffee.entity';
-import { Repository } from 'typeorm';
 import { Flavor } from './entities/flavor.entity';
 
 @Injectable()
