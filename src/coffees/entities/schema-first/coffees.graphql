@@ -1,4 +1,17 @@
-type Coffee {
+interface Drink {
+  name: String!
+}
+
+type Tea implements Drink {
+  name: String!
+}
+
+enum CoffeeType {
+  ARABICA
+  ROBUSTA
+}
+
+type Coffee implements Drink {
   """
   Unique identifier
   """
@@ -6,6 +19,7 @@ type Coffee {
   name: String!
   brand: String!
   flavors: [String!]!
+  type: CoffeeType
 }
 
 input CreateCoffeeInput {
@@ -20,9 +34,12 @@ input UpdateCoffeeInput {
   flavors: [String!]
 }
 
+union DrinksResult = Coffee | Tea
+
 type Query {
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
+  drinks: [DrinksResult!]!
 }
 
 type Mutation {

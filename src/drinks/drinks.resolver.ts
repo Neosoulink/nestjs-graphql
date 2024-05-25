@@ -4,7 +4,7 @@ import { DrinksResultUnion } from '../common/unions/drinks-results.union';
 
 import { DrinksService } from './drinks.service';
 
-@Resolver()
+@Resolver('DrinksResult')
 export class DrinksResolver {
   constructor(private readonly _drinksService: DrinksService) {}
 
