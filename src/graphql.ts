@@ -31,6 +31,7 @@ export interface Drink {
 
 export class Tea implements Drink {
     name: string;
+    createdAt?: Nullable<Date>;
 }
 
 export class Coffee implements Drink {
@@ -39,6 +40,7 @@ export class Coffee implements Drink {
     brand: string;
     flavors: string[];
     type?: Nullable<CoffeeType>;
+    createdAt?: Nullable<Date>;
 }
 
 export abstract class IQuery {

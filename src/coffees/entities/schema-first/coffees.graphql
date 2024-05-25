@@ -1,9 +1,15 @@
+"""
+Date custom scalar type
+"""
+scalar Date
+
 interface Drink {
   name: String!
 }
 
 type Tea implements Drink {
   name: String!
+  createdAt: Date
 }
 
 enum CoffeeType {
@@ -20,6 +26,7 @@ type Coffee implements Drink {
   brand: String!
   flavors: [String!]!
   type: CoffeeType
+  createdAt: Date
 }
 
 input CreateCoffeeInput {
