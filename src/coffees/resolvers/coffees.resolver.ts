@@ -11,10 +11,10 @@ import { ParseIntPipe } from '@nestjs/common';
 // In case of schema first approach, get the Coffee, Flavors & Drink types from `graphql.ts`
 // import * as GraphQLType from '../graphql';
 
-import { Coffee } from './entities/coffee.entity';
-import { CreateCoffeeInput } from './dto/create-coffee.input';
-import { CoffeesService } from './coffees.service';
-import { UpdateCoffeeInput } from './dto/update-coffee.input';
+import { Coffee } from '../entities/coffee.entity';
+import { CreateCoffeeInput } from '../dto/create-coffee.input';
+import { CoffeesService } from '../coffees.service';
+import { UpdateCoffeeInput } from '../dto/update-coffee.input';
 import { PubSub } from 'graphql-subscriptions';
 
 @Resolver()

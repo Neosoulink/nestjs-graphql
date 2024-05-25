@@ -1,8 +1,8 @@
 import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
 
-import { Flavor } from './entities/flavor.entity';
-import { Coffee } from './entities/coffee.entity';
-import { FlavorsByCoffeeLoader } from './data-loader/flavors-by-coffee/flavors-by-coffee.loader';
+import { Flavor } from '../entities/flavor.entity';
+import { Coffee } from '../entities/coffee.entity';
+import { FlavorsByCoffeeLoader } from '../data-loader/flavors-by-coffee/flavors-by-coffee.loader';
 
 @Resolver(() => Coffee)
 export class CoffeeFlavorsResolver {
